@@ -6,63 +6,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Smart Parking Platform</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .parking-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .parking-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .available {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            padding: 10px;
+            width: 60%;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<h2>Parking Availability</h2>
 
-<p>
-    City Center Parking:
-    <strong>25 Spaces Available</strong>
-</p>
-
-<p>
-    Railway Station Parking:
-    <strong>12 Spaces Available</strong>
-</p>
-
-<p>
-    Shopping Mall Parking:
-    <strong>40 Spaces Available</strong>
-</p>
-
-<h2>Find Nearby Parking</h2>
-
-<form>
-    <label for="location">Enter Location:</label>
-    <input type="text" id="location" name="location" placeholder="Enter your location">
-
-    <button type="submit">Find Parking</button>
-</form>
-
-</body>
 <body>
 
-    <h1>Intelligent Smart Parking and Traffic Congestion Management Platform</h1>
+<header>
+    <h1>Intelligent Smart Parking Platform</h1>
+    <p>Parking Availability and Traffic Management</p>
+</header>
+
+<div class="container">
 
     <h2>Parking Availability</h2>
 
-    <p>
-        City Center Parking:
-        <strong>25 Spaces Available</strong>
-    </p>
+    <div class="parking-container">
 
-    <p>
-        Railway Station Parking:
-        <strong>12 Spaces Available</strong>
-    </p>
+        <div class="parking-card">
+            <h3>City Center Parking</h3>
+            <p class="available">25 Spaces Available</p>
+        </div>
 
-    <p>
-        Shopping Mall Parking:
-        <strong>40 Spaces Available</strong>
-    </p>
+        <div class="parking-card">
+            <h3>Railway Station Parking</h3>
+            <p class="available">12 Spaces Available</p>
+        </div>
+
+        <div class="parking-card">
+            <h3>Shopping Mall Parking</h3>
+            <p class="available">40 Spaces Available</p>
+        </div>
+
+    </div>
+
+    <form>
+        <h2>Find Nearby Parking</h2>
+
+        <input
+            type="text"
+            placeholder="Enter your location"
+        >
+
+        <button type="submit">
+            Find Parking
+        </button>
+    </form>
+
+</div>
 
 </body>
 
 </html>
-<h2>Find Nearby Parking</h2>
-
-<form>
-    <label for="location">Enter Location:</label>
-    <input type="text" id="location" name="location" placeholder="Enter your location">
-
-    <button type="submit">Find Parking</button>
-</form>

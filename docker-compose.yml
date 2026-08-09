@@ -1,0 +1,56 @@
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: smart-parking-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - smart-parking-network
+
+  backend:
+    build:
+      context: ./backend
+    container_name: smart-parking-backend
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_HOST: database
+      DATABASE_PORT: 5432
+      DATABASE_NAME: smartparking
+      DATABASE_USER: parkinguser
+      DATABASE_PASSWORD: parkingpass
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - smart-parking-network
+
+  database:
+    image: postgres:16-alpine
+    container_name: smart-parking-database
+    environment:
+      POSTGRES_DB: smartparking
+      POSTGRES_USER: parkinguser
+      POSTGRES_PASSWORD: parkingpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - parking-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U parkinguser -d smartparking"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - smart-parking-network
+
+networks:
+  smart-parking-network:
+    driver: bridge
+
+volumes:
+  parking-data:
